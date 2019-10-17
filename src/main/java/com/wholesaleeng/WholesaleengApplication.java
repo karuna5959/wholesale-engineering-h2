@@ -3,12 +3,18 @@ package com.wholesaleeng;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 
 @SpringBootApplication
+@EnableSwagger2
 public class WholesaleengApplication {
 
     @Autowired
@@ -20,7 +26,6 @@ public class WholesaleengApplication {
 
     @PostConstruct
     private void initDb() {
-        System.out.println("****** Inserting more sample data in the table: Employees ******");
         String sqlStatements[] = {
                 "insert into ACCOUNT_DETAILS(ACC_NBR, ACC_NAME, ACC_TYPE, BAL_DATE, CURRENCY, CURR_BAL, ACC_USER_NAME) values(123458, 'SGSaving8', 'Savings', '2018-11-11', 'AUD', '800', '1');\n" +
                         "insert into ACCOUNT_DETAILS(ACC_NBR, ACC_NAME, ACC_TYPE, BAL_DATE, CURRENCY, CURR_BAL, ACC_USER_NAME) values(123459, 'SGSaving811', 'Savings', '2018-11-11', 'AUD', '200', '1');\n" +

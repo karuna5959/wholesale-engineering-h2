@@ -7,6 +7,7 @@ import com.wholesaleeng.exceptions.NoDataFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class AccountDetailsController {
     @Autowired
     private AccountDetailsImpl accountDetailsImpl;
 
-    @RequestMapping("/accountDetails")
+    @RequestMapping(value ="/accountDetails" , method= RequestMethod.GET)
     public List<AccountEntity> getAccountDetails(@RequestParam("userName") String userName ) throws InvalidInputException, NoDataFoundException {
         if(!StringUtils.isEmpty(userName))
         {
