@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -26,6 +27,7 @@ public class AccountEntity implements Serializable {
 
     @Id
     @Column(name="acc_nbr", nullable=false)
+    @Size(min = 10,max = 10)
     private String accountNumber;
 
     @Column(name="acc_name", nullable=false)

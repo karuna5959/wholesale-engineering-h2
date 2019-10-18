@@ -1,9 +1,9 @@
 package com.wholesaleeng.controller;
 
 import com.wholesaleeng.dao.account.impl.AccountDetailsImpl;
-import com.wholesaleeng.entity.AccountEntity;
 import com.wholesaleeng.exceptions.InvalidInputException;
 import com.wholesaleeng.exceptions.NoDataFoundException;
+import com.wholesaleeng.model.AccountDetailsRO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class AccountDetailsController {
     private AccountDetailsImpl accountDetailsImpl;
 
     @RequestMapping(value ="/accountDetails" , method= RequestMethod.GET)
-    public List<AccountEntity> getAccountDetails(@RequestParam("userName") String userName ) throws InvalidInputException, NoDataFoundException {
+    public List<AccountDetailsRO> getAccountDetails(@RequestParam("userName") String userName ) throws InvalidInputException, NoDataFoundException {
         if(!StringUtils.isEmpty(userName))
         {
             return accountDetailsImpl.getAccountDetailsForUser(userName);
