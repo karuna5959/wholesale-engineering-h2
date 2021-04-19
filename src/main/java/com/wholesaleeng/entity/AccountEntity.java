@@ -1,6 +1,8 @@
 package com.wholesaleeng.entity;
 
 
+import com.wholesaleeng.util.AccountUtil;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,26 +28,26 @@ public class AccountEntity implements Serializable {
     }
 
     @Id
-    @Column(name="acc_nbr", nullable=false)
-    @Size(min = 10,max = 10)
+    @Column(name = "acc_nbr", nullable = false)
+    @Size(min = 10, max = 10)
     private String accountNumber;
 
-    @Column(name="acc_name", nullable=false)
+    @Column(name = "acc_name", nullable = false)
     private String accountName;
 
-    @Column(name="acc_type", nullable=false)
+    @Column(name = "acc_type", nullable = false)
     private String accountType;
 
-    @Column(name="bal_date", nullable=false)
+    @Column(name = "bal_date", nullable = false)
     private Date balanceDate;
 
-    @Column(name="currency", nullable=false)
+    @Column(name = "currency", nullable = false)
     private String currency;
 
-    @Column(name="curr_bal", nullable=false)
+    @Column(name = "curr_bal", nullable = false)
     private double opngAvlbBalance;
 
-    @Column(name="acc_user_name", nullable=false)
+    @Column(name = "acc_user_name", nullable = false)
     private String userID;
 
     public String getAccountNumber() {
@@ -72,8 +74,8 @@ public class AccountEntity implements Serializable {
         this.accountType = accountType;
     }
 
-    public Date getBalanceDate() {
-        return balanceDate;
+    public String getBalanceDate() {
+        return AccountUtil.formatDateddMMYYY(balanceDate);
     }
 
     public void setBalanceDate(Date balanceDate) {

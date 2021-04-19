@@ -1,9 +1,9 @@
 package com.wholesaleeng.Controller;
 
 import com.wholesaleeng.controller.AccountDetailsController;
-import com.wholesaleeng.dao.account.impl.AccountDetailsImpl;
+import com.wholesaleeng.service.AccountDetailsImpl;
 import com.wholesaleeng.exceptions.NoDataFoundException;
-import com.wholesaleeng.model.AccountDetailsRO;
+import com.wholesaleeng.model.AccountDetails;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -38,12 +38,13 @@ public class AccountDetailsControllerTests {
 
     @Test
     public void testGetAccountDetails() throws Exception {
-      AccountDetailsRO accountDetailsRO = new AccountDetailsRO();
-      accountDetailsRO.setAccountName("1234595543");
+      AccountDetails accountDetails = new AccountDetails();
+      accountDetails.setAccountName("1234595543");
 
-      List<AccountDetailsRO> accountDetailsROS = new ArrayList<>();
-      accountDetailsROS.add(accountDetailsRO);
-        Mockito.when(accountDetailsImpl.getAccountDetailsForUser(Mockito.anyString())).thenReturn(accountDetailsROS);
+      List<AccountDetails> accountDetailsRo = new ArrayList<>();
+        accountDetailsRo.add(accountDetails);
+
+        Mockito.when(accountDetailsImpl.getAccountDetailsForUser(Mockito.anyString())).thenReturn(accountDetailsRo);
         this.mvc.perform(get("/accountDetails?userName=1")).andDo(print()).andExpect(content().string(containsString("1234595543")));
     }
 

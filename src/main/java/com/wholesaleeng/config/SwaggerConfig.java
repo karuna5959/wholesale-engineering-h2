@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig extends  WebMvcConfigurationSupport{
+public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Whole Sale Engineering ")
@@ -24,6 +24,7 @@ public class SwaggerConfig extends  WebMvcConfigurationSupport{
                 .version("1.0.0")
                 .build();
     }
+
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -42,4 +43,4 @@ public class SwaggerConfig extends  WebMvcConfigurationSupport{
     }
 
 
-    }
+}

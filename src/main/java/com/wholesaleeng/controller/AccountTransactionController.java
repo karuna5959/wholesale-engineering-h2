@@ -1,9 +1,9 @@
 package com.wholesaleeng.controller;
 
-import com.wholesaleeng.dao.account.impl.AccountTransactionDetailsImpl;
 import com.wholesaleeng.exceptions.InvalidInputException;
 import com.wholesaleeng.exceptions.NoDataFoundException;
-import com.wholesaleeng.model.AccountTransactionsRO;
+import com.wholesaleeng.model.AccountTransactions;
+import com.wholesaleeng.service.AccountTransactionDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +19,10 @@ public class AccountTransactionController {
     private AccountTransactionDetailsImpl transactionService;
 
     @RequestMapping("/transactionDetails")
-    public List<AccountTransactionsRO> getTransactionDetails(@RequestParam("accountNumber") String accountID) throws NoDataFoundException, InvalidInputException {
-        if(!StringUtils.isEmpty(accountID))
-        {
+    public List<AccountTransactions> getTransactionDetails(@RequestParam("accountNumber") String accountID) throws NoDataFoundException, InvalidInputException {
+        if (!StringUtils.isEmpty(accountID)) {
             return transactionService.getAcctTrnDetailsForAccNbr(accountID);
-        }
-        else
-        {
+        } else {
             throw new InvalidInputException("Input is not valid");
 
         }

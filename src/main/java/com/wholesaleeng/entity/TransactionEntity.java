@@ -1,5 +1,7 @@
 package com.wholesaleeng.entity;
 
+import com.wholesaleeng.util.AccountUtil;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -25,31 +27,31 @@ public class TransactionEntity implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
 
-    @Column(name="acc_nbr", nullable=false)
+    @Column(name = "acc_nbr", nullable = false)
     private String accountNumber;
 
-    @Column(name="trn_acc_type", nullable=false)
+    @Column(name = "trn_acc_type", nullable = false)
     private String accountName;
 
-    @Column(name="trn_date", nullable=false)
+    @Column(name = "trn_date", nullable = false)
     private Date transactionDt;
 
-    @Column(name="currency", nullable=false)
+    @Column(name = "currency", nullable = false)
     private String currency;
 
-    @Column(name="trn_debit_amt")
-    private  double debitAmt;
+    @Column(name = "trn_debit_amt")
+    private double debitAmt;
 
-    @Column(name="trn_credit_amt")
+    @Column(name = "trn_credit_amt")
     private double creditAmt;
 
-    @Column(name="trn_type", nullable=false)
+    @Column(name = "trn_type", nullable = false)
     private String transactionTyp;
 
-    @Column(name="trn_comments")
+    @Column(name = "trn_comments")
     private String transactionComments;
 
     public int getTransactionId() {
@@ -61,7 +63,7 @@ public class TransactionEntity implements Serializable {
     }
 
     public String getAccountNumber() {
-        return accountNumber;
+        return AccountUtil.formatAccountNumber(accountNumber);
     }
 
     public void setAccountNumber(String accountNumber) {
@@ -76,8 +78,8 @@ public class TransactionEntity implements Serializable {
         this.accountName = accountName;
     }
 
-    public Date getTransactionDt() {
-        return transactionDt;
+    public String getTransactionDt() {
+        return AccountUtil.formatDatedMMMddYYY(transactionDt);
     }
 
     public void setTransactionDt(Date transactionDt) {

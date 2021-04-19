@@ -4,14 +4,14 @@ import com.wholesaleeng.entity.TransactionEntity;
 
 import java.io.Serializable;
 
-public class AccountTransactionsRO implements Serializable {
+public class AccountTransactions implements Serializable {
 
-    public AccountTransactionsRO() {
+    public AccountTransactions() {
     }
 
-    public AccountTransactionsRO(TransactionEntity transactionEntity, String transactionDate, String accountNumber) {
-        this.transactionDate = transactionDate;
-        this.accountNumber = accountNumber;
+    public AccountTransactions(TransactionEntity transactionEntity) {
+        this.transactionDate = transactionEntity.getTransactionDt();
+        this.accountNumber = transactionEntity.getAccountNumber();
         this.accountName = transactionEntity.getAccountName();
         this.currency = transactionEntity.getCurrency();
         this.debitAmt = transactionEntity.getDebitAmt();
@@ -29,7 +29,7 @@ public class AccountTransactionsRO implements Serializable {
 
     private String currency;
 
-    private  double debitAmt;
+    private double debitAmt;
 
     private double creditAmt;
 
