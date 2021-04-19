@@ -11,13 +11,13 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableSwagger2
-public class WholesaleengApplication {
+public class WholesaleEngApplication {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(WholesaleengApplication.class, args);
+        SpringApplication.run(WholesaleEngApplication.class, args);
     }
 
     @PostConstruct
